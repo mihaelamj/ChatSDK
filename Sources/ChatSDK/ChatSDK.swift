@@ -9,8 +9,21 @@
 @_exported import ResChatSpeech
 @_exported import ResChatProtocols
 @_exported import ResChatSocket
+@_exported import ResChatProxy
 
 import Foundation
+
+#if os(iOS)
+//@_exported import ResChatHouUIKit
+//@_exported import ResChatUIKit
+import UIKit
+public typealias PlatformViewController = UIViewController
+#elseif os(macOS)
+//@_exported import ResChatHouAppKit
+//@_exported import ResChatAppKitUI
+import AppKit
+public typealias PlatformViewController = NSViewController
+#endif
 
 public class ChatManager: NSObject {
     
