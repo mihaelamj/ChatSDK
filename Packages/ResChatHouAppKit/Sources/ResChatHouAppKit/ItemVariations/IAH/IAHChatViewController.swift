@@ -17,7 +17,7 @@ public class IAHChatViewController: ChatViewController {
         super.init(imageProvider: IAHImageProvider(),
                    colorProvider: IAHColorProvider(),
                    speechRecognizer: speechRecognizer)
-        self.navigationBarProvider = IAHNavigationBarProvider()
+//        self.navigationBarProvider = IAHNavigationBarProvider()
     }
     
     required init?(coder: NSCoder) {

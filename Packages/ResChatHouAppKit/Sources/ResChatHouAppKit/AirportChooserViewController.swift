@@ -37,7 +37,7 @@ public class AirportChooserViewController: PlatformViewController {
                                 target: self,
                                 action: #selector(chooseButtonTapped))
     
-//    public weak var delegate: AirportAndLanguageChooserDelegate?
+    public weak var delegate: AirportAndLanguageChooserDelegate?
     
     let airports: [Airport]
     let languages: [Language]

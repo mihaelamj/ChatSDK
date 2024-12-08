@@ -15,11 +15,13 @@ let package = Package(
             targets: ["ResChatAppKitUI"]),
     ],
     dependencies: [
-        .package(name: "ResChatUICommon", path: "../ResChatUICommon"),
         .package(name: "ResChatAppearance", path: "../ResChatAppearance"),
+        .package(name: "ResChatMessageManager", path: "../ResChatMessageManager"),
         .package(name: "ResChatProtocols", path: "../ResChatProtocols"),
         .package(name: "ResChatAttributedText", path: "../ResChatAttributedText"),
-        .package(name: "ResChatMessageManager", path: "../ResChatMessageManager"),
+        .package(name: "ResChatUICommon", path: "../ResChatUICommon"),
+        .package(name: "ResChatSpeech", path: "../ResChatSpeech"),
+        .package(name: "ResChatLogging", path: "../ResChatLogging")
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
@@ -27,11 +29,13 @@ let package = Package(
         .target(
             name: "ResChatAppKitUI",
             dependencies: [
-                "ResChatUICommon",
                 "ResChatAppearance",
+                "ResChatMessageManager",
                 "ResChatProtocols",
                 "ResChatAttributedText",
-                "ResChatMessageManager"
+                "ResChatUICommon",
+                "ResChatSpeech",
+                "ResChatLogging"
             ]),
         .testTarget(
             name: "ResChatAppKitUITests",

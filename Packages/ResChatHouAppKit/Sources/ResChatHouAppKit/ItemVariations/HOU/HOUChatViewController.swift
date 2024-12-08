@@ -18,7 +18,7 @@ public class HOUChatViewController: ChatViewController {
         super.init(imageProvider: HOUImageProvider(),
                    colorProvider: HOUColorProvider(),
                    speechRecognizer: speechRecognizer)
-        navigationBarProvider = HOUNavigationBarProvider()
+//        navigationBarProvider = HOUNavigationBarProvider()
     }
     
     required init?(coder: NSCoder) {

@@ -10,6 +10,7 @@
 @_exported import ResChatProtocols
 @_exported import ResChatSocket
 @_exported import ResChatProxy
+@_exported import ResChatUICommon
 
 import Foundation
 
