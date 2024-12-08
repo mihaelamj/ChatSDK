@@ -6,7 +6,7 @@
 //
 
 import Foundation
-//import ResChatUIKit
+import ResChatUIKit
 import ResChatHouCommon
 import ResChatSpeech 
 
