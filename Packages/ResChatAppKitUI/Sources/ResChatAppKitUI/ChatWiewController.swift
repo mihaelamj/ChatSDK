@@ -177,11 +177,11 @@ open class ChatViewController: NSViewController {
     // MARK: Data Management -
     
     private func configureDataSource() {
-        _ = dataSource // This triggers the lazy initialization of `dataSource`
+//        _ = dataSource  This triggers the lazy initialization of `dataSource`
     }
     
     private func applyInitialDemoSnapshot() {
-        dataSource.applyInitialSnapshot(messages: initialDemoMessages())
+//        dataSource.applyInitialSnapshot(messages: initialDemoMessages())
     }
     
     // MARK: Actions -

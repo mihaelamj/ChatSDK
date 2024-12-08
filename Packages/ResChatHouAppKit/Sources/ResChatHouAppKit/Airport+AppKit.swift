@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  Airport+AppKit.swift
 //  ResChatHouAppKit
 //
 //  Created by Mihaela MJ on 17.09.2024..
@@ -8,6 +8,7 @@
 import AppKit
 import ResChatHouCommon
 import ResChatAppKitUI
+import ResChatSpeech
 
 public extension Airport {
     func chatViewControllerForLanguage(_ language: Language) -> ChatViewController {

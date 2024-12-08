@@ -26,7 +26,7 @@ public class AirportChooserViewController: PlatformViewController {
     let airportSegmentedControl = NSSegmentedControl(labels: Airport.allCases.map { $0.name },
                                                      trackingMode: .selectOne,
                                                      target: self,
-                                                     action: #selector(airportSegmentedControlChanged(_:)
+                                                     action: #selector(airportSegmentedControlChanged(_:)))
     let languageLabel = NSTextField(labelWithString: NSLocalizedString("select_language",
                                                                        value: "Select preferred language",
                                                                        comment: "Label for selecting preferred language"))
@@ -52,7 +52,7 @@ public class AirportChooserViewController: PlatformViewController {
     
     // MARK: Init -
     
-    init(airports: [Airport] = Airport.allCases, languages: [Language] = Language.allCases) {
+    required init(airports: [Airport] = Airport.allCases, languages: [Language] = Language.allCases) {
         self.airports = airports
         self.languages = languages
         super.init(nibName: nil, bundle: nil)
@@ -184,8 +184,12 @@ private extension AirportChooserViewController {
 }
 
 public extension AirportChooserViewController {
-    static func make() -> AirportChooserViewController {
-        let result = AirportChooserViewController()
-        return result
+//    override static func make() -> AirportChooserViewController {
+//        let result = AirportChooserViewController()
+//        return result
+//    }
+    
+    override class func make() -> Self {
+        return Self.init(airports: Airport.allCases, languages: Language.allCases)
     }
 }
