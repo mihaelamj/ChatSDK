@@ -25,10 +25,10 @@ let package = Package(
         .package(path: "Packages/ResChatProtocols"),
         .package(path: "Packages/ResChatSocket"),
         .package(path: "Packages/ResChatProxy"),
-//        .package(path: "Packages/ResChatHouUIKit"), // iOS-specific
-//        .package(path: "Packages/ResChatUIKit"), // iOS-specific
-//        .package(path: "Packages/ResChatHouAppKit"), // macOS-specific
-//        .package(path: "Packages/ResChatAppKitUI"), // macOS-specific
+        .package(path: "Packages/ResChatHouUIKit"), // iOS-specific
+        .package(path: "Packages/ResChatUIKit"), // iOS-specific
+        .package(path: "Packages/ResChatHouAppKit"), // macOS-specific
+        .package(path: "Packages/ResChatAppKitUI"), // macOS-specific
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
@@ -44,10 +44,10 @@ let package = Package(
                 "ResChatProtocols",
                 "ResChatSocket",
                 "ResChatProxy",
-//                .target(name: "ResChatHouUIKit", condition: .when(platforms: [.iOS])),
-//                .target(name: "ResChatUIKit", condition: .when(platforms: [.iOS])),
-//                .target(name: "ResChatHouAppKit", condition: .when(platforms: [.macOS])),
-//                .target(name: "ResChatAppKitUI", condition: .when(platforms: [.macOS])),
+                .product(name: "ResChatHouUIKit", package: "ResChatHouUIKit", condition: .when(platforms: [.iOS])),
+                .product(name: "ResChatUIKit", package: "ResChatUIKit", condition: .when(platforms: [.iOS])),
+                .product(name: "ResChatHouAppKit", package: "ResChatHouAppKit", condition: .when(platforms: [.macOS])),
+                .product(name: "ResChatAppKitUI", package: "ResChatAppKitUI", condition: .when(platforms: [.macOS])),
                 ]
         ),
         .testTarget(

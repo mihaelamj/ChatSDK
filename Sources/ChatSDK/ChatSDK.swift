@@ -14,13 +14,13 @@
 import Foundation
 
 #if os(iOS)
-//@_exported import ResChatHouUIKit
-//@_exported import ResChatUIKit
+@_exported import ResChatHouUIKit
+@_exported import ResChatUIKit
 import UIKit
 public typealias PlatformViewController = UIViewController
 #elseif os(macOS)
-//@_exported import ResChatHouAppKit
-//@_exported import ResChatAppKitUI
+@_exported import ResChatHouAppKit
+@_exported import ResChatAppKitUI
 import AppKit
 public typealias PlatformViewController = NSViewController
 #endif
