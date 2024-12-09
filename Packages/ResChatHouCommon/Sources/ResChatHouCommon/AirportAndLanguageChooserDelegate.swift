@@ -44,7 +44,7 @@ extension PlatformAirportViewController {
         let socket = airport.socket
         
         // Call the delegate method
-        delegate?.didSelectAirport(airport,
+        chooserDelegate?.didSelectAirport(airport,
                                    language: language,
                                    socket: socket,
                                    chatViewController: chatViewController,

@@ -82,6 +82,7 @@ private extension ChatManager {
     func makeChooserController() -> PlatformAirportViewController? {
         var airportChooserVC: PlatformViewController?
         airportChooserVC = PlatformViewController.makeChooserController(ofType: AirportChooserViewController.self)
+        airportChooserVC?.genericDelegate = self
         return airportChooserVC
     }
     
@@ -132,7 +133,13 @@ extension ChatManager: AirportAndLanguageChooserDelegate {
         
 #if os(iOS)
         if let airportChooserVC = airportChooserVC as? AirportChooserViewController {
-            airportChooserVC.navigationController?.pushViewController(viewController, animated: true)
+            if let navigationController = airportChooserVC.navigationController {
+                // Push onto the navigation stack if a navigation controller exists
+                navigationController.pushViewController(viewController, animated: true)
+            } else {
+                // Present modally if there is no navigation controller
+                airportChooserVC.present(viewController, animated: true, completion: nil)
+            }
         }
 
 #elseif os(macOS)
