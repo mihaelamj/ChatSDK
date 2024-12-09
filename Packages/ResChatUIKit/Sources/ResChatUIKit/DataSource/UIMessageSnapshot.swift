@@ -8,10 +8,6 @@
 import UIKit
 import ResChatUICommon
 
-public enum ChatSection {
-    case main
-}
-
 // Custom snapshot type alias
 typealias UIMessageSnapshot = NSDiffableDataSourceSnapshot<ChatSection, UIMessage>
 

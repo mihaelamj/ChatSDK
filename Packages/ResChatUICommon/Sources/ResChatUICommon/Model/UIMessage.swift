@@ -13,6 +13,10 @@ extension UIMessage: AttributedTextProviding {}
 
 extension UIMessage: @unchecked Sendable {}
 
+public enum ChatSection {
+    case main
+}
+
 public struct UIMessage: Hashable, Codable {
     
     public var text: String 

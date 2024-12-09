@@ -42,6 +42,18 @@ open class ChatViewController: PlatformViewController {
     
 //    var messageHandler: MessageHandlingAlgorithm = OptimizedStreamingAlgorithm()
     
+    // MARK: Cell Classes -
+    
+    open class var userMessageCellType: UserMessageCell.Type {
+        UserMessageCell.self
+    }
+    open class var chatBotMessageCellType: ChatBotMessageCell.Type {
+        ChatBotMessageCell.self
+    }
+    open class var loadingMessageCellType: LoadingTableViewCell.Type {
+        LoadingTableViewCell.self
+    }
+    
     // MARK: UI Elements -
     
     lazy var tableView: NSTableView = {
@@ -51,14 +63,14 @@ open class ChatViewController: PlatformViewController {
         return tableView
     }()
     
-//    lazy var dataSource: UIMessageDataSource = {
-//        return UIMessageDataSource(
-//            tableView: tableView,
-//            userMessageCellType: Self.userMessageCellType,
-//            botMessageCellType: Self.chatBotMessageCellType,
-//            loadingMessageCellType: Self.loadingMessageCellType
-//        )
-//    }()
+    lazy var dataSource: UIMessageDataSource = {
+        return UIMessageDataSource(
+            tableView: tableView,
+            userMessageCellType: Self.userMessageCellType,
+            botMessageCellType: Self.chatBotMessageCellType,
+            loadingMessageCellType: Self.loadingMessageCellType
+        )
+    }()
     
     let loadingIndicator = NSProgressIndicator()
     
