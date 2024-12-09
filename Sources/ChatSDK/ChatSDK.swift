@@ -133,17 +133,29 @@ extension ChatManager: AirportAndLanguageChooserDelegate {
         
 #if os(iOS)
         if let airportChooserVC = airportChooserVC as? AirportChooserViewController {
-            if let navigationController = airportChooserVC.navigationController {
+            if let navigationController = airportChooserVC.navigationController ?? topMostViewController() as? UINavigationController {
                 // Push onto the navigation stack if a navigation controller exists
                 navigationController.pushViewController(viewController, animated: true)
             } else {
                 // Present modally if there is no navigation controller
-                airportChooserVC.present(viewController, animated: true, completion: nil)
+                if let topVC = topMostViewController() {
+                    topVC.present(viewController, animated: true, completion: nil)
+                } else {
+                    print("No visible view controller to present from.")
+                }
             }
         }
 
 #elseif os(macOS)
         airportChooserVC.present(viewController, animator: NSViewControllerPresentationAnimator())
 #endif
+    }
+    
+    func topMostViewController() -> UIViewController? {
+        var topController = UIApplication.shared.keyWindow?.rootViewController
+        while let presentedController = topController?.presentedViewController {
+            topController = presentedController
+        }
+        return topController
     }
 }
