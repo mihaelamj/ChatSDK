@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  MessageOriginProviding+Socket.swift
 //  reschatproxy
 //
 //  Created by Mihaela MJ on 18.09.2024..
