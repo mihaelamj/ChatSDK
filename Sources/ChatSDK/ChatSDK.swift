@@ -55,8 +55,13 @@ public class ChatManager: NSObject {
             self.presentedViewController = navigationController
         }
     #elseif os(macOS)
-        (viewController as! NSViewController).presentAsModalWindow(chooserVC)
-        self.presentedViewController = chooserVC
+        if let nsPresenter = viewController as? NSViewController, let nsChooser = chooserVC as? NSViewController {
+            nsPresenter.presentAsModalWindow(nsChooser)
+            self.presentedViewController = nsChooser
+        } else {
+            print("Failed to create chooser & presenter view controllers.")
+        }
+        
     #endif
     }
 
@@ -145,17 +150,26 @@ extension ChatManager: AirportAndLanguageChooserDelegate {
                 }
             }
         }
+        
+        func topMostViewController() -> UIViewController? {
+            var topController = UIApplication.shared.keyWindow?.rootViewController
+            while let presentedController = topController?.presentedViewController {
+                topController = presentedController
+            }
+            return topController
+        }
 
 #elseif os(macOS)
-        airportChooserVC.present(viewController, animator: NSViewControllerPresentationAnimator())
+        if let nsPresenter = airportChooserVC as? NSViewController,
+            let nsController = viewController as? NSViewController {
+            nsPresenter.presentAsModalWindow(nsController)
+//            nsPresenter.present(nsController, animator: NSViewControllerPresentationAnimator())
+            self.presentedViewController = nsController
+        } else {
+            
+        }
 #endif
     }
     
-    func topMostViewController() -> UIViewController? {
-        var topController = UIApplication.shared.keyWindow?.rootViewController
-        while let presentedController = topController?.presentedViewController {
-            topController = presentedController
-        }
-        return topController
-    }
+
 }
