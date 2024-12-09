@@ -312,7 +312,7 @@ open class ChatViewController: PlatformViewController {
     }
     
     deinit {
-        AttributedTextCache.shared.saveToDisk()
+        AttributedTextCache.shared.clearCache()
         NotificationCenter.default.removeObserver(self)
     }
     

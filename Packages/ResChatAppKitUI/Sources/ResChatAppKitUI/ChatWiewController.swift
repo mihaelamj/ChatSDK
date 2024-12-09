@@ -136,7 +136,7 @@ open class ChatViewController: PlatformViewController {
     }
     
     deinit {
-        AttributedTextCache.shared.saveToDisk()
+        AttributedTextCache.shared.clearCache()
     }
     
     // MARK: Lifecycle -
