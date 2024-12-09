@@ -43,12 +43,16 @@ public class AirportChooserViewController: PlatformViewController {
     let languages: [Language]
     
     var selectedAirport: Airport {
-        return airports[airportSegmentedControl.selectedSegment]
+        return airports[airportSegmentedControl.selectedSegment != -1
+                            ? airportSegmentedControl.selectedSegment
+                            : 0]
     }
     
     var selectedLanguage: Language {
-        return languages[languagePicker.indexOfSelectedItem]
+        let selectedIndex = languagePicker.indexOfSelectedItem
+        return languages.indices.contains(selectedIndex) ? languages[selectedIndex] : languages.first ?? .english
     }
+    
     
     // MARK: Init -
     
@@ -72,9 +76,6 @@ public class AirportChooserViewController: PlatformViewController {
         
         setupScrollView()
         setupViews()
-        
-//        airportSegmentedControl.target = self
-//        airportSegmentedControl.action = #selector(segmentedControlValueChanged(_:))
         
         // Set up language picker
         languagePicker.addItems(withTitles: languages.map { $0.rawValue })

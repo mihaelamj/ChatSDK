@@ -39,18 +39,26 @@ private extension AppDelegate {
 
     func makeMainViewController() -> NSViewController {
         let viewController = NSViewController()
-        viewController.view = NSView()
+        viewController.view = NSView(frame: NSRect(x: 0, y: 0, width: 800, height: 600)) // Set a frame
         viewController.view.wantsLayer = true
         viewController.view.layer?.backgroundColor = NSColor.white.cgColor
 
         let resChatButton = NSButton(title: "Open ResChat", target: self, action: #selector(openResChat))
         resChatButton.bezelStyle = .rounded
-        
+
+        // Customize the button appearance
+        resChatButton.wantsLayer = true
+        resChatButton.layer?.backgroundColor = NSColor.systemBlue.cgColor // Button background color
+        resChatButton.layer?.cornerRadius = 5 // Rounded corners
+        resChatButton.contentTintColor = .white // Button text color
+
         viewController.view.addSubview(resChatButton)
         resChatButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             resChatButton.centerXAnchor.constraint(equalTo: viewController.view.centerXAnchor),
-            resChatButton.centerYAnchor.constraint(equalTo: viewController.view.centerYAnchor)
+            resChatButton.centerYAnchor.constraint(equalTo: viewController.view.centerYAnchor),
+            resChatButton.widthAnchor.constraint(equalToConstant: 120), // Optional: Button width
+            resChatButton.heightAnchor.constraint(equalToConstant: 40) // Optional: Button height
         ])
         
         return viewController
