@@ -14,7 +14,7 @@ import ResChatUICommon
 import ResChatSpeech
 import ResChatMessageManager
 
-open class ChatViewController: NSViewController {
+open class ChatViewController: PlatformViewController {
     
     enum ScrollPosition {
         case top

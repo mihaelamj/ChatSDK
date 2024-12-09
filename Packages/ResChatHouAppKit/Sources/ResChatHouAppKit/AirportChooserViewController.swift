@@ -185,11 +185,6 @@ private extension AirportChooserViewController {
 }
 
 public extension AirportChooserViewController {
-//    override static func make() -> AirportChooserViewController {
-//        let result = AirportChooserViewController()
-//        return result
-//    }
-    
     override class func make() -> Self {
         return Self.init(airports: Airport.allCases, languages: Language.allCases)
     }
